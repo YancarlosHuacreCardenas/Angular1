@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Bienvenido al Backend de Formulario 🚀</h1>
+
+  <form (ngSubmit)="guardar()">
+    <input [(ngModel)]="form.nombre" name="nombre" placeholder="Nombre" required>
+    <input [(ngModel)]="form.descripcion" name="descripcion" placeholder="Descripción" required>
+    <button type="submit">{{ form.id ? 'Actualizar' : 'Guardar' }}</button>
+    <button type="button" (click)="reset()">Cancelar</button>
+  </form>
+
+<ul *ngIf="lista.length > 0; else emptyList">
+  <li *ngFor="let item of lista">
+    {{ item.nombre }} - {{ item.descripcion }}
+    <button type="button" (click)="editar(item)">Editar</button>
+    <button type="button" (click)="eliminar(item)">Eliminar</button>
+  </li>
+</ul>
+
+<ng-template #emptyList>
+  <p>No hay registros disponibles.</p>
+</ng-template>
+</div>
